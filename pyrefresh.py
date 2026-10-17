@@ -54,7 +54,7 @@
                       #second is the stop value, representing the index after where the list stops,
                       #third is the step value, stating how many steps the list takes.
                       #these three steps are called list slicing
-#to get valuyes in reverse
+#to get values in reverse
 #new_list.reverse()
 #print(new_list[2:9:2])
 #or
@@ -167,56 +167,162 @@
 #collect two arguments(string andd interger)
 #print the string the amout of time given by the interger argument
 #i.e if interger is 5, string should print 5 times
-def shouter(x_str='hey',y_num=4):
-    counter=0
-    if y_num <= 10:
-        while counter < y_num:
-            print(x_str.upper())
-            counter+=1
+# def shouter(x_str='hey',y_num=4):
+#     counter=0
+#     if y_num <= 10:
+#         while counter < y_num:
+#             print(x_str.upper())
+#             counter+=1
 #or
-        #for i in range(y_num):
-           #print(x_str.upper()) 
-    else:
-        print(' You are too loud')
-    return('done')
-result=shouter('Daniel',7)
-print(result)
+         #for i in range(y_num):
+            #print(x_str.upper()) 
+#    else:
+#        print(' You are too loud')
+#    return('done')
+# result=shouter('Daniel',7)
+# print(result)
+
+#LIST COMPREHENSION
+# simple_list=[f'{j}_{i}' for i in range(0,11,1) for j in ('a','b','c')]
+# print(simple_list)
 
 #1: E-Commerce Discount & Tax Calculator
-prices = [12.00, 85.00, 45.00, 150.00, 8.50]
-discount_price=[ 
-        f"{(price* 0.91* 0.95):.2f}" 
-        if price>50  
-        else f"{(price * 0.95):.2f}"
-         for price in prices
-        ]
-print(discount_price)
+# prices = [12.00, 85.00, 45.00, 150.00, 8.50]
+# discount_price=[ 
+#         f"{(price* 0.91* 0.95):.2f}" 
+#         if price>50  
+#         else f"{(price * 0.95):.2f}"
+#          for price in prices
+#         ]
+# print(discount_price)
 
 #Challenge 2: Log File Alert Filter
-logs = [
-    "INFO: Server started on port 8080",
-    "WARNING: Disk usage high (85%)",
-    "ERROR: Database connection failed",
-    "INFO: User 102 logged in",
-    "CRITICAL: System running out of memory"
-]
+# logs = [
+#     "INFO: Server started on port 8080",
+#     "WARNING: Disk usage high (85%)",
+#     "ERROR: Database connection failed",
+#     "INFO: User 102 logged in",
+#     "CRITICAL: System running out of memory"
+# ]
 
-filter_log=[log.upper() 
-            for log in logs 
-            if log.startswith("CRITICAL") or log.startswith("ERROR")]
-print(filter_log)
+# filter_log=[log.upper() 
+#             for log in logs 
+#             if log.startswith("CRITICAL") or log.startswith("ERROR")]
+# print(filter_log)
 
 #3Extracting Domain Names from Web URLs
-urls = [
-    "https://www.google.com/search?q=python",
-    "http://github.com/repository",
-    "https://www.youtube.com/watch?v=123",
-    "https://wikipedia.org/wiki/Main_Page"
+# urls = [
+#     "https://www.google.com/search?q=python",
+#     "http://github.com/repository",
+#     "https://www.youtube.com/watch?v=123",
+#     "https://wikipedia.org/wiki/Main_Page"
+# ]
+# domain_name=[url.replace("https://","") 
+#             .replace("http://","") 
+#             .replace("www.","") 
+#             .split("/")[0] 
+#             for url in urls ]
+# print(domain_name)
+
+#LAMBDA FUNCTIONS
+# def doubele_value(num):
+#     return num * 2
+# doubele_value= lambda num:num * 2
+# print(doubele_value(10))
+
+# USING RANDOM AND RANGE TO CREATE A LIST AND ARRANGE IT ASCENDING & DESCENDING ORDER
+# import random
+# counter=0
+# random_list=[]
+# while counter<=10:
+#         random_list.append(random.randint(1,20))
+#         counter+=1
+# print(random_list)
+# #or
+# #random_list = [random.randint(1,20) for _ in range(10)]
+# #print(random_list)
+# # to print in ascending/descending order:
+# # for only lists(ascending)
+# random_list.sort(reverse=False)
+# print(random_list)
+# # for all data objects(descending)
+# descending_list= sorted(random_list, reverse= True)
+# print(descending_list) 
+
+#USING LAMBDA TO SORT TUPLE IN LIST BY INDEX VALUE
+# unsort=[('anna',25), ('john',22), ('kali',19)]
+# sort=sorted(unsort, key=lambda user_tuple: user_tuple[0])
+# print(sort)
+
+#USING LIST COMPOSTITIONS TO PRINT A LIST IF A CONDITION IS MET(REMOVING A VALUE)
+#battleship_board=[f'{j}{i}' for i in range(1,6,1) for j in ('a','b','c','d','e') if f'{j}{i}' !='c3' ]
+#or
+#CONVERTING TUPLE TO LIST TO USE .REMOVE METHOD
+# battleship_board=[f'{j}{i}' for i in range(1,6,1) for j in ('a','b','c','d','e')]
+# temp_list= list(battleship_board)
+# temp_list.remove('c3')
+# battleship_board = temp_list
+
+# print(battleship_board)
+
+#SORT SCORES
+users = [
+    {"name": "Alice", "score": 85},
+    {"name": "Bob", "score": 92},
+    {"name": "Charlie", "score": 78}
 ]
 
-domain_name=[url.replace("https://","") 
-            .replace("http://","") 
-            .replace("www.","") 
-            .split("/")[0] 
-            for url in urls ]
-print(domain_name)
+#sorted_users= sorted(users,key= lambda x:x["score"],reverse=True)
+#print(sorted_users)
+
+# #1)Custom Multi-Level Sorting with Lambdas       
+# employees = [("HR", 50000), ("IT", 80000), ("HR", 65000), ("IT", 75000), ("Sales", 60000)]      
+# sort_employees=sorted(employees,key= lambda x:(x[0],-x[1]) )
+# print(sort_employees)
+
+# #2)Dictionary Comprehension & Filtering
+# inventory = {"laptop": 5, "mouse": 0, "keyboard": 12, "monitor": 2, "desk": 0}
+# updated_inventory={key: value for key,value in inventory.items()if value >0}
+# print(updated_inventory)
+
+# #3)Advanced List Comprehension Grid Generator
+# seats=[f'{j}{i}' for i in range (2,7,2) for j in ("A","B","C")]
+# print(seats)
+
+class Human:
+    def __init__(self,health):
+        self.health =health
+    def attack(self):
+            print('attack')
+    
+class Warrior(Human):
+    def __init__(self,health,defense):
+        super().__init__(health)#super is use to call another class in order to use it's method
+        self.defense=defense
+    def defend(self):
+        print(f'defend with {self.defense} defence')
+
+class Barbarian(Human):
+    def __init__(self,health,damage):
+        super().__init__(health)
+        self.damage=damage
+    def attack(self):
+        print(f'attack with {self.damage} damage')
+    
+class Monster(Barbarian):
+     def __init__(self,health,damage):
+        super().__init__(health,damage) 
+        self.damage=damage
+     def attack(self):
+        super().attack()
+     def __str__(self):
+         return f"a monster with {self.health} hp"
+
+warrior= Warrior(50,5.5)
+barbarian = Barbarian(100,8.1)
+monster = Monster(150,10)
+warrior.attack()
+warrior.defend()
+print(monster.health)
+monster.attack()
+print (monster)
